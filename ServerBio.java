@@ -24,16 +24,16 @@ public class ServerBio extends Thread{
         if(serverSocket != null) return;
         try{
             serverSocket = new ServerSocket(port); // bind   listen()
-            System.out.println("服务器已启动 端口号："+ port);
+            System.out.println("The server has satrted. The port number is ："+ port);
             Socket socket;
             while(true){
                 socket = serverSocket.accept();
-                System.out.println("socket : "+ socket +"已连接");
+                System.out.println("socket : "+ socket +"is connected");
                 new Thread((new ServerHandler(socket))).start();
             }
         }finally {
             if(serverSocket != null){
-                System.out.println("服务器已关闭");
+                System.out.println("Server is down");
                 serverSocket.close();
                 serverSocket = null;
             }
