@@ -16,17 +16,17 @@ public class clientBio {
         Scanner scanner = new Scanner(System.in);
         boolean flag = false;
         while(!flag){
-            System.out.println("请输入:");
+            System.out.println("Please input:");
             String expression = scanner.next();
             send(expression);
             while(true){
-                System.out.println("继续计算？ Y/N");
+                System.out.println("Continue to calculate？ Y/N");
                 String string = scanner.next();
                 if(string.equalsIgnoreCase("N")){
                     flag = true;
                     break;
                 }else if(string.equalsIgnoreCase("Y")){
-                    System.out.println("请输入：");
+                    System.out.println("Please input：");
                     expression = scanner.next();
                     send(expression);
                 }
@@ -39,7 +39,7 @@ public class clientBio {
     }
 
     private static void send(int port,String experssion){
-        System.out.println("输入： "+ experssion);
+        System.out.println("Input： "+ experssion);
         Socket socket = null;
         BufferedReader bufferedReader = null;
         PrintWriter out = null;
@@ -48,7 +48,7 @@ public class clientBio {
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(),true);
             out.println(experssion);
-            System.out.println("____结果为"+ bufferedReader.readLine());
+            System.out.println("The hashCode result is :"+ bufferedReader.readLine());
         }catch (Exception e){
             e.printStackTrace();
         }finally {
